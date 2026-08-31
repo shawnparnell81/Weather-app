@@ -1,0 +1,30 @@
+.weather-card {
+  text-align: center;
+  font-family: Helvetica;
+  font-size: 28px;
+  color: white;
+  background-color: rgb(10, 131, 172);
+  width: auto;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+#search-btn {
+  background-color: rgb(20, 208, 215);
+  transform: translateY(0);
+  transition:
+    background-color 200ms ease,
+    transform 200ms ease;
+}
+
+#search-btn:hover {
+  background-color: #0adb37;
+  transform: translateY(-2px);
+}
+
+.search-box {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 15px;
+}
