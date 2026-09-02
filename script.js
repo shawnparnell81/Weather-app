@@ -15,7 +15,7 @@ const weatherCodes = {
   63: "Rain",
   65: "Heavy rain",
   71: "Snow",
-  95: "Thunderstorm"
+  95: "Thunderstorm",
 };
 
 let currentUnit = "celsius";
@@ -36,7 +36,13 @@ async function getWeather(city) {
   const lat = firstResult.latitude;
   const lon = firstResult.longitude;
 
-  const weatherUrl = "https://api.open-meteo.com/v1/forecast?latitude=" + lat + "&longitude=" + lon + "&current_weather=true&temperature_unit=" + currentUnit;
+  const weatherUrl =
+    "https://api.open-meteo.com/v1/forecast?latitude=" +
+    lat +
+    "&longitude=" +
+    lon +
+    "&current_weather=true&temperature_unit=" +
+    currentUnit;
   const weatherResponse = await fetch(weatherUrl);
   const weatherData = await weatherResponse.json();
 
@@ -49,6 +55,18 @@ async function getWeather(city) {
   cityName.textContent = firstResult.name;
   temperature.textContent = temp + symbol;
   description.textContent = desc;
+
+  const forecastUrl =
+    "https://api.open-meteo.com/v1/forecast?latitude=" +
+    lat +
+    "&longitude=" +
+    lon +
+    "&daily=temperature_2m_max,temperature_2m_min,weathercode&temperature_unit=" +
+    currentUnit +
+    "&timezone=auto";
+  const forecastResponse = await fetch(forecastUrl);
+  const forecastData = await forecastResponse.json();
+  console.log(forecastData);
 }
 
 searchBtn.addEventListener("click", function () {
